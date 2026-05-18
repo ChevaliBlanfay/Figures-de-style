@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les 110 Figures de Style - Université Digitale Africaine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .site-name {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            margin-bottom: 1rem;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-info {
+            font-size: 0.9rem;
+            opacity: 0.75;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: white;
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .figures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .figure-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border-left: 5px solid #667eea;
+        }
+
+        .figure-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+            border-left-color: #764ba2;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card-num {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin: 0.8rem 0 0.4rem;
+        }
+
+        .card-subtitle {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .card-body {
+            padding: 1.8rem;
+        }
+
+        .illustration {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .definition {
+            background: #f8f9ff;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid #667eea;
+            font-weight: 500;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+
+        .role-section {
+            background: #fff8e1;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid #ff9800;
+        }
+
+        .role-title {
+            font-weight: 700;
+            color: #ff6f00;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+
+        .role-text {
+            color: #404040;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .examples-section {
+            margin-top: 1.2rem;
+        }
+
+        .examples-title {
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+
+        .example {
+            background: #f0f3ff;
+            padding: 0.9rem;
+            margin-bottom: 0.7rem;
+            border-radius: 6px;
+            border-left: 3px solid #667eea;
+            color: #2c3e50;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .example::before {
+            content: "→ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .stats {
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            margin: 2rem 0;
+            font-weight: 500;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.95rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-credit {
+            margin-top: 1rem;
+            opacity: 0.8;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .figures-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="site-name">🌍 Université Digitale Africaine</div>
+        <h1>Les 110 Figures de Style</h1>
+        <p>Guide Interactif et Complet</p>
+        <div class="author-info">👤 Auteur: N'GOMA MOUKOKO CHEVALI B</div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Rechercher une figure de style... (ex: métaphore, allitération)">
+    </div>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterBySection('all')">Toutes les figures</button>
+        <button class="filter-btn" onclick="filterBySection('1-20')">1-20</button>
+        <button class="filter-btn" onclick="filterBySection('21-40')">21-40</button>
+        <button class="filter-btn" onclick="filterBySection('41-60')">41-60</button>
+        <button class="filter-btn" onclick="filterBySection('61-80')">61-80</button>
+        <button class="filter-btn" onclick="filterBySection('81-110')">81-110</button>
+    </div>
+
+    <div class="container">
+        <div class="stats" id="stats"></div>
+        <div class="figures-grid" id="figuresGrid"></div>
+    </div>
+
+    <footer>
+        <p><strong>Université Digitale Africaine</strong></p>
+        <p>Plateforme d'apprentissage et de ressources pédagogiques</p>
+        <div class="footer-credit">
+            <p>© 2024 - Guide créé par N'GOMA MOUKOKO CHEVALI B</p>
+            <p>Tous les droits réservés</p>
+        </div>
+    </footer>
+
+    <script>
+        const allFigures = [
+            // SECTION I (1-20)
+            { num: 1, title: "La Métaphore", subtitle: "Comparaison implicite", definition: "Comparaison entre deux éléments sans termes de comparaison (comme, tel que).", role: "Crée des images poétiques, enrichit l'expression, rend abstraits les concepts concrets", examples: ["La vie est une montagne à gravir", "Son cœur est une forêt dense et mystérieuse", "Le temps est un fleuve qui s'écoule sans cesse"], section: "1-20", icon: "🎨" },
+            { num: 2, title: "La Comparaison", subtitle: "Ressemblance explicite", definition: "Rapprochement de deux réalités au moyen d'un outil de comparaison (comme, tel que).", role: "Facilite la compréhension, clarifie les idées, crée des images visuelles", examples: ["Blanc comme la neige", "Doux comme le miel", "Courageux comme un lion"], section: "1-20", icon: "⚖️" },
+            { num: 3, title: "La Personnification", subtitle: "Humanisation", definition: "Attribution de qualités humaines à des choses, des animaux ou des abstractions.", role: "Anime le texte, rend vivant ce qui ne l'est pas, crée l'empathie", examples: ["La nuit enveloppe la ville de son silence", "Le vent danse dans les branches", "La mort a frappé à sa porte"], section: "1-20", icon: "👤" },
+            { num: 4, title: "L'Allitération", subtitle: "Répétition de consonnes", definition: "Répétition du même son consonantique au début de mots rapprochés.", role: "Crée une musicalité, renforce l'impact émotionnel, facilite la mémorisation", examples: ["Pour qui sont ces serpents qui sifflent sur vos têtes?", "Trois tigres trottaient dans le tigre", "Christian le cœur content courait"], section: "1-20", icon: "🔊" },
+            { num: 5, title: "L'Assonance", subtitle: "Répétition de voyelles", definition: "Répétition du même son vocalique à l'intérieur de mots rapprochés.", role: "Produit une harmonie musicale, crée une atmosphère, souligne certains mots", examples: ["Les anges dans nos campagnes", "Elle crée une atmosféra de drame", "En été, les blés ondulent au vent"], section: "1-20", icon: "🎵" },
+            { num: 6, title: "L'Hyperbole", subtitle: "Exagération intentionnelle", definition: "Exagération extrême d'une idée pour frapper l'imagination.", role: "Amplifie l'expression, crée un effet comique ou dramatique, attire l'attention", examples: ["Je meurs de faim, je meurs d'amour", "Il l'a dit mille fois", "J'ai traversé des montagnes de difficultés"], section: "1-20", icon: "📈" },
+            { num: 7, title: "L'Oxymore", subtitle: "Association paradoxale", definition: "Rapprochement de deux termes contradictoires qui créent une relation paradoxale.", role: "Exprime des nuances complexes, crée une tension poétique, choque pour interpeller", examples: ["Une obscurité lumineuse", "Un bruit silencieux", "Une triste joie"], section: "1-20", icon: "😵" },
+            { num: 8, title: "L'Antithèse", subtitle: "Opposition de termes", definition: "Mise en opposition de deux idées, sentiments ou objets contraires.", role: "Souligne les contrastes, crée du relief, facilite la réflexion philosophique", examples: ["C'est la plus belle des guerres, la plus terrifiante des paix", "Il est fort et faible à la fois", "Je t'aime et je te hais"], section: "1-20", icon: "⚔️" },
+            { num: 9, title: "L'Énumération", subtitle: "Accumulation de termes", definition: "Accumulation de termes ou de propositions de même nature pour créer un effet.", role: "Crée une accumulation, amplifie l'expression, accélère le rythme", examples: ["Pluies, neiges, tempêtes, tornades dévastaient les plaines", "Je vois la beauté partout: dans les fleurs, les étoiles, les sourires", "Courir, danser, rire, vivre!"], section: "1-20", icon: "📝" },
+            { num: 10, title: "L'Pléonasme", subtitle: "Redondance expressive", definition: "Répétition de mots ou d'idées pour renforcer l'expression.", role: "Renforce l'expression, crée une intensité, marque l'importance", examples: ["Je l'ai vu de mes propres yeux", "Monter en haut, descendre en bas", "Entendre de ses oreilles"], section: "1-20", icon: "🔁" },
+            { num: 11, title: "La Litote", subtitle: "Atténuation volontaire", definition: "Atténuation volontaire d'une idée en employant une forme négative.", role: "Crée une subtilité, adoucit le ton, crée une ironie fine", examples: ["Ce n'est pas mal (pour dire: c'est bon)", "Il n'est pas très bête", "Pas mal pour un début"], section: "1-20", icon: "🤷" },
+            { num: 12, title: "L'Ironie", subtitle: "Contraste entre apparence et réalité", definition: "Expression où le sens réel est l'inverse du sens apparent.", role: "Crée de l'humour, critique discrètement, invite à la réflexion", examples: ["'Quel génie!' (pour quelqu'un qui vient de faire une bêtise)", "Bravo pour ce chef-d'œuvre!", "Tu es vraiment discret!"], section: "1-20", icon: "😏" },
+            { num: 13, title: "La Synecdoque", subtitle: "Substitution partielle", definition: "Figure où on prend la partie pour le tout ou le tout pour la partie.", role: "Crée une expression concise, change la perspective, enrichit le style", examples: ["Avoir 300 âmes dans la maison (au lieu de 300 personnes)", "C'est un grand cœur", "Tous les bras se levèrent"], section: "1-20", icon: "🔄" },
+            { num: 14, title: "La Métonymie", subtitle: "Substitution de mots", definition: "Substitution d'un mot par un autre qui lui est associé par une relation logique.", role: "Enrichit l'expression, crée des associations d'idées, abrège le discours", examples: ["Boire un verre (au lieu de boire ce qui est dans le verre)", "Lire Molière (au lieu de lire l'œuvre de Molière)", "Les Bleus ont gagné le match"], section: "1-20", icon: "🔀" },
+            { num: 15, title: "L'Antonomase", subtitle: "Substitution de noms", definition: "Emploi du nom propre pour désigner un type, une qualité.", role: "Crée une expression frappante, enrichit le vocabulaire, évite la répétition", examples: ["C'est un Napoléon (pour un homme de pouvoir)", "C'est une Jeanne d'Arc moderne", "Il se prend pour un Casanova"], section: "1-20", icon: "👑" },
+            { num: 16, title: "La Périphrase", subtitle: "Détour d'expression", definition: "Emploi de plusieurs mots pour exprimer ce qu'on pourrait dire en un seul.", role: "Crée de la poésie, enrichit l'expression, crée du suspense", examples: ["L'astre du jour (pour le soleil)", "La reine de la nuit (pour la lune)", "Le roi des animaux (pour le lion)"], section: "1-20", icon: "🌟" },
+            { num: 17, title: "L'Allusion", subtitle: "Référence implicite", definition: "Référence discrète à une idée, un événement ou une œuvre sans les nommer.", role: "Crée une complicité avec le lecteur, enrichit le texte de résonances", examples: ["Vivre son Waterloo (allusion à la défaite)", "Comme Prométhée, il a volé le feu", "Elle a connu son Ithaque"], section: "1-20", icon: "💡" },
+            { num: 18, title: "L'Antiphrase", subtitle: "Affirmation ironique", definition: "Affirmation du contraire de ce qu'on veut faire entendre.", role: "Crée l'ironie, critique par l'absurde, provoque la réflexion", examples: ["'Bravo pour cette catastrophe!'", "'Quel talent!' (devant un dessin raté)", "'Tu es vraiment modeste!'"], section: "1-20", icon: "🎭" },
+            { num: 19, title: "L'Zeugme", subtitle: "Double construction", definition: "Mot employé dans deux sens différents ou avec deux constructions différentes.", role: "Crée un effet d'humour, attire l'attention, enrichit l'expression", examples: ["Elle laissa tomber ses gants et sa dignité", "Armé de patience et de courage", "Il fit un héros et une belle sortie"], section: "1-20", icon: "🎯" },
+            { num: 20, title: "L'Aposiopèse", subtitle: "Interruption volontaire", definition: "Interruption volontaire du discours avant son achèvement.", role: "Crée du suspense, laisse imaginer, renforce l'émotion", examples: ["Si vous faites ça, je... (silence suggestif)", "Je n'ose pas dire ce que...", "Il était sur le point de..."], section: "1-20", icon: "⏸️" },
+
+            // SECTION II (21-40)
+            { num: 21, title: "L'Anaphore", subtitle: "Répétition initiale", definition: "Répétition du même mot ou groupe de mots au début de propositions successives.", role: "Crée un rythme, amplifie l'expression, marque l'insistance", examples: ["Et la fleur et l'astre et le vent", "Non, je ne baisserai pas la tête, non, je ne renoncerai pas", "Je veux, je peux, je dois réussir"], section: "21-40", icon: "🔝" },
+            { num: 22, title: "L'Épiphore", subtitle: "Répétition finale", definition: "Répétition du même mot ou groupe de mots à la fin de propositions successives.", role: "Crée un rythme, facilite la mémorisation, crée de l'harmonie", examples: ["Je viens pour te voir, pour t'aider, pour t'aimer", "Silence après silence, attente après attente", "Il faut vivre pour aimer, aimer pour vivre"], section: "21-40", icon: "🔚" },
+            { num: 23, title: "Le Chiasme", subtitle: "Inversion croisée", definition: "Répétition de structures syntaxiques dans un ordre inversé.", role: "Crée une symétrie, marque l'équilibre, facilite la mémorisation", examples: ["Il faut manger pour vivre et non vivre pour manger", "Demander d'abord, puis donner ensuite", "Je travaille pour vivre, elle vit pour travailler"], section: "21-40", icon: "🔄" },
+            { num: 24, title: "L'Énallage", subtitle: "Changement de perspective", definition: "Emploi d'une partie du discours à la place d'une autre.", role: "Crée une originalité stylistique, change la perspective, enrichit l'expression", examples: ["Du courage! (nom au lieu de l'adjectif courageux)", "Un rouge éclatant (adjectif devenant un nom)", "Il court vite les chevaux (verbe utilisé comme adjectif)"], section: "21-40", icon: "🔀" },
+            { num: 25, title: "L'Inversion", subtitle: "Ordre inversé", definition: "Modification de l'ordre normal des mots pour créer un effet stylistique.", role: "Crée une emphase, change le rythme, crée une solennité", examples: ["Magnifique était ce jour", "En haut brille l'astre du jour", "Triste demeurait le cœur"], section: "21-40", icon: "🔃" },
+            { num: 26, title: "L'Énumération Graduelle", subtitle: "Accumulation progressive", definition: "Énumération de termes s'amplifiant progressivement en intensité.", role: "Crée une progression, amplifie l'effet, prépare le point culminant", examples: ["Il marche, il court, il vole!", "Une tristesse, un désespoir, un néant absolu", "Simple, beau, magnifique, divin!"], section: "21-40", icon: "📈" },
+            { num: 27, title: "L'Paradoxe", subtitle: "Apparente contradiction", definition: "Affirmation apparemment fausse ou contradictoire mais contenant une vérité.", role: "Invite à la réflexion, attire l'attention, exprime des nuances complexes", examples: ["Moins on parle, plus on pense", "Il faut mourir pour vivre", "Plus on vieillit, plus jeune on devient"], section: "21-40", icon: "🤔" },
+            { num: 28, title: "Le Pléonasme Expressif", subtitle: "Redondance renforcée", definition: "Répétition intentionnelle de mots ayant le même sens pour intensifier.", role: "Renforce l'expression, crée une intensité émotionnelle, marque l'insistance", examples: ["Voir de ses yeux, entendre de ses oreilles", "Monter en haut, descendre en bas", "Je l'ai entendu de mes propres oreilles"], section: "21-40", icon: "💪" },
+            { num: 29, title: "L'Hyperbole Graduelle", subtitle: "Exagération progressive", definition: "Succession d'hyperboles s'amplifiant d'une seule à la suivante.", role: "Crée un effet comique, amplifie l'expression, prépare le point culminant", examples: ["Ce n'est pas grave, c'est terrible, c'est apocalyptique!", "J'ai une faim légère, une faim terrible, une faim infernale", "Légèrement triste, très triste, désespérément triste"], section: "21-40", icon: "⬆️" },
+            { num: 30, title: "Le Paradoxisme", subtitle: "Succession de paradoxes", definition: "Succession de paradoxes créant une philosophie particulière.", role: "Crée une réflexion profonde, attire l'attention, suscite l'intérêt", examples: ["La mort donne la vie, la nuit éclaire, le silence parle", "Gagner en perdant, réussir en échouant", "Trouver la force dans la faiblesse"], section: "21-40", icon: "🌀" },
+            { num: 31, title: "L'Antanaclase", subtitle: "Répétition avec changement de sens", definition: "Répétition d'un mot avec un changement de sens d'une occurrence à l'autre.", role: "Crée un effet d'humour, joue sur les mots, enrichit l'expression", examples: ["La charité plaît aux riches, qui est de la charité", "Le prince charmant n'était pas charmant", "L'arme secrète était une arme à feu secret"], section: "21-40", icon: "🔄" },
+            { num: 32, title: "Le Calembour", subtitle: "Jeu de mots", definition: "Jeu de mots basé sur la ressemblance de sons ou de sens.", role: "Crée de l'humour, amuse par la surprise, enrichit l'expression", examples: ["Un pasteur avec ses fidèles moutonnaient", "Lion passer l'arme au pied", "Assurance vous donne satisfaction"], section: "21-40", icon: "😄" },
+            { num: 33, title: "Le Contrepet", subtitle: "Inversion de lettres", definition: "Inversion de lettres ou de syllabes créant un autre sens humoristique.", role: "Crée de l'humour par la surprise, amuse le lecteur", examples: ["Bonheur dégueulasse au lieu de dégueulasse bonheur", "Manche prédateur au lieu de prédateur manche", "Ministre pas content au lieu de pas content ministre"], section: "21-40", icon: "🎭" },
+            { num: 34, title: "Le Spoonerisme", subtitle: "Échange de sons", definition: "Échange involontaire ou volontaire de sons ou de syllabes créant un sens nouveau.", role: "Crée de l'humour, provoque l'amusement, enrichit la musicalité", examples: ["Jésus Crisp au lieu de Jesus Christ", "Jésus frite au lieu de Jésus écrit", "Un feu d'artifice au lieu d'un feu de fierté"], section: "21-40", icon: "🔀" },
+            { num: 35, title: "L'Apocope", subtitle: "Suppression finale", definition: "Suppression de la fin d'un mot pour créer une forme abrégée.", role: "Crée une familiarité, accélère la prononciation, rajeunit l'expression", examples: ["'Lectro au lieu d'électricité", "'Frigo au lieu de réfrigérateur", "Tél au lieu de téléphone"], section: "21-40", icon: "✂️" },
+            { num: 36, title: "L'Aphérèse", subtitle: "Suppression initiale", definition: "Suppression du début d'un mot pour créer une forme abrégée.", role: "Crée une originalité, change la prononciation, rajeunit le vocabulaire", examples: ["Casse au lieu de brasser", "Vélo au lieu de bicyclette", "Phone au lieu de microphone"], section: "21-40", icon: "✂️" },
+            { num: 37, title: "La Synérèse", subtitle: "Contraction syllabique", definition: "Fusion de deux syllabes en une seule pour des raisons métriques ou phonétiques.", role: "Crée un effet de rythme, facilite la prononciation, joue sur la musicalité", examples: ["Dieu (au lieu de di-eu)", "Lion (au lieu de li-on)", "Voyage (au lieu de vo-ia-ge)"], section: "21-40", icon: "🔁" },
+            { num: 38, title: "La Diérèse", subtitle: "Séparation syllabique", definition: "Séparation d'une diphtongue en deux syllabes distinctes.", role: "Crée un effet de rythme, enrichit le mètre, joue sur la musicalité", examples: ["Cha-o-s au lieu de cha-os", "Li-o-n au lieu de li-on", "Di-eu au lieu de dieu"], section: "21-40", icon: "🔂" },
+            { num: 39, title: "L'Acrostiche", subtitle: "Première lettre significative", definition: "Première lettre de chaque vers ou ligne formant un mot ou un message caché.", role: "Crée un message caché, enrichit le texte, surprend le lecteur attentif", examples: ["A-R-B-R-E lisant verticalement", "M-A-R-C-H-E lisant verticalement", "L-E-R-C-E lisant verticalement"], section: "21-40", icon: "🔤" },
+            { num: 40, title: "Le Calligramme", subtitle: "Texte en forme d'image", definition: "Texte disposé de manière à former une figure ou une image visuelle.", role: "Crée une dimension visuelle, joue sur la forme, enrichit l'expression poétique", examples: ["Poème en forme de cœur", "Mots disposés en spirale", "Lettres formant une silhouette"], section: "21-40", icon: "🎨" },
+
+            // SECTION III (41-60)
+            { num: 41, title: "Le Paradoxisme Oxymorique", subtitle: "Paradoxe et oxymore combinés", definition: "Combination du paradoxe et de l'oxymore pour créer une tension maximale.", role: "Crée une réflexion profonde, exprime les nuances complexes, attire l'attention", examples: ["Une mort vivante", "Un silence bruyant", "Une obscurité lumineuse"], section: "41-60", icon: "🌌" },
+            { num: 42, title: "L'Allégorie", subtitle: "Histoire symbolique", definition: "Narration ou description où chaque élément représente une idée abstraite.", role: "Illustre des concepts abstraits, crée du suspense interprétatif, enrichit le sens", examples: ["La fable de la cigale et de la fourmi", "Le voyage du chevalier contre le dragon", "La progression du héros initiatique"], section: "41-60", icon: "🗺️" },
+            { num: 43, title: "Le Symbole", subtitle: "Représentation conventionnelle", definition: "Objet ou action qui représente conventionnellement une idée ou un concept.", role: "Crée de la poésie, enrichit le sens, facilite la compréhension universelle", examples: ["Le blanc pour la pureté", "Le noir pour le mal", "La rose pour l'amour"], section: "41-60", icon: "🌹" },
+            { num: 44, title: "La Métaphorisation", subtitle: "Univers métaphorique", definition: "Création d'un système cohérent de métaphores dans tout un texte.", role: "Crée un monde poétique cohérent, enrichit la compréhension, magnifie l'expression", examples: ["La vie est un théâtre", "Le monde est un jeu d'échecs", "L'existence est un rêve"], section: "41-60", icon: "🎭" },
+            { num: 45, title: "La Comparaison Épique", subtitle: "Comparaison amplifiée", definition: "Comparaison étendue sur plusieurs vers ou lignes avec amplification progressive.", role: "Crée une ampleur poétique, enrichit la description, élève le ton", examples: ["Comme une montagne face au vent, il tenait bon", "Tel un lion dans la savane, il dominait", "Ainsi qu'un aigle survolant le monde"], section: "41-60", icon: "⛰️" },
+            { num: 46, title: "La Personnification Animale", subtitle: "Animaux humanisés", definition: "Personnification spécifique où les animaux sont dotés de qualités humaines.", role: "Crée de la sympathie, rend attachant, facilite la moralité", examples: ["Le renard ruse avec prudence", "L'aigle plane avec fierté", "La biche tremble gracieusement"], section: "41-60", icon: "🦊" },
+            { num: 47, title: "La Comparaison Extravagante", subtitle: "Rapprochement inattendu", definition: "Comparaison entre éléments totalement différents et inattendus.", role: "Crée l'originalité, suscite l'étonnement, enrichit l'imagination", examples: ["Une voiture comme une bibliothèque ambulante", "Un éléphant dansant le ballet", "Une chanson silencieuse"], section: "41-60", icon: "🎪" },
+            { num: 48, title: "L'Hyperbole Comique", subtitle: "Exagération drôle", definition: "Exagération volontaire destinée à créer un effet humoristique.", role: "Crée du rire, critique par l'absurde, divertit le lecteur", examples: ["Il l'a dit un million de fois!", "Mort de rire!", "Pèse une tonne!"], section: "41-60", icon: "😂" },
+            { num: 49, title: "L'Understatement", subtitle: "Minimisation ironique", definition: "Diminution intentionnelle de l'importance de quelque chose pour créer l'ironie.", role: "Crée l'ironie fine, critique discrètement, amuse par la sous-estimation", examples: ["Ce n'est pas si grave (pour quelque chose de très grave)", "Juste un frisson de panique", "Un détail mineur que la fin du monde"], section: "41-60", icon: "🤷" },
+            { num: 50, title: "L'Antiphrase Ironique", subtitle: "Ironie par antiphrase", definition: "Antiphrase créant un effet ironique par le contraste avec la réalité.", role: "Crée l'ironie, critique discrètement, suscite la réflexion", examples: ["'Bravo pour ce désastre!'", "'Quel génie!' (devant une bêtise)", "'Tu es vraiment discret!' (à quelqu'un de bavard)"], section: "41-60", icon: "🎭" },
+            { num: 51, title: "La Rime Riche", subtitle: "Rime pleine", definition: "Rime sur plusieurs phonèmes, not just the last vowel and consonant.", role: "Crée une harmonie musicale, marque la perfection formelle, enrichit le rythme", examples: ["Mer/lumière", "Éternité/Infinité", "Douleur/couleur"], section: "41-60", icon: "✍️" },
+            { num: 52, title: "La Rime Imparfaite", subtitle: "Rime approchée", definition: "Rime qui n'est pas parfaite mais crée un lien sonore entre mots.", role: "Crée une harmonie moins stricte, donne liberté poétique, modernise la poésie", examples: ["Amour/jour", "Ciel/miel", "Fleur/pleur"], section: "41-60", icon: "📖" },
+            { num: 53, title: "La Rime Léonine", subtitle: "Rime interne", definition: "Rime qui se produit à l'intérieur d'un vers plutôt qu'à la fin.", role: "Crée une musicalité interne, enrichit le rythme, surprend le lecteur", examples: ["Salut, Ciel!", "Bon, fond", "Pour, ardeur"], section: "41-60", icon: "🔀" },
+            { num: 54, title: "L'Assonance Enrichie", subtitle: "Harmonie vocale", definition: "Assonance étendue et enrichie créant une musicalité complexe.", role: "Crée une atmosphère poétique, enrichit la musicalité, marque l'importance", examples: ["Pour pouvoir poursuivre son entreprise", "Où coulent les eaux éternelles", "Elle crée une atmosphère de drame"], section: "41-60", icon: "🎵" },
+            { num: 55, title: "L'Allitération Majeure", subtitle: "Sons durs répétés", definition: "Allitération accentuée sur consonnes dures et explosives.", role: "Crée un effet percutant, marque l'agressivité ou la force, attire l'attention", examples: ["Trois tigres trottaient terrifiés", "Cruelle, créative, curieuse", "Pas de panique, péril pressant!"], section: "41-60", icon: "🔊" },
+            { num: 56, title: "L'Homophonie", subtitle: "Même son, sens différent", definition: "Utilisation de mots ayant le même son mais des sens différents.", role: "Crée un jeu de mots, amuse par la ressemblance, enrichit la signification", examples: ["C'est/ses", "Cent/sang", "Pair/père"], section: "41-60", icon: "🔀" },
+            { num: 57, title: "La Périphrase Poétique", subtitle: "Détour expressif", definition: "Périphrase employée pour créer un effet poétique ou lyrique.", role: "Crée de la poésie, enrichit l'expression, magnifie la description", examples: ["L'aurore aux doigts de rose", "La reine de la nuit", "Le roi des animaux"], section: "41-60", icon: "👑" },
+            { num: 58, title: "L'Allégorie Narrative", subtitle: "Histoire allégorique", definition: "Allégorie développée sous forme d'une narration complete.", role: "Illustre des concepts moraux, crée du suspense, enrichit la réflexion", examples: ["La fable de la cigale et de la fourmi", "L'histoire du lapin et de la tortue", "Le conte des trois petits cochons"], section: "41-60", icon: "📚" },
+            { num: 59, title: "La Métalepse", subtitle: "Confusion de niveaux narratifs", definition: "Confusion ou mélange des niveaux narratifs d'un récit.", role: "Brise l'illusion, interpelle le lecteur, crée l'originalité", examples: ["Le narrateur quitte la narration pour s'adresser au lecteur", "Le personnage demande au narrateur de l'aider", "Rupture du quatrième mur"], section: "41-60", icon: "🎬" },
+            { num: 60, title: "L'Antiphraste", subtitle: "Antithèse phrastique", definition: "Expression antithétique d'une idée par une phrase contradictoire.", role: "Crée l'ironie, exprime l'opposition, invite à la réflexion", examples: ["Dire oui pour affirmer non", "Nier par une affirmation", "Confirmer par la négation"], section: "41-60", icon: "❌✅" },
+
+            // SECTION IV (61-80)
+            { num: 61, title: "Le Polyptote", subtitle: "Même radical, formes différentes", definition: "Répétition du même radical avec des variations morphologiques.", role: "Crée une harmonie, joue sur les mots, enrichit le rythme", examples: ["Le miroir mire l'image", "Qui sait ce qu'il sait?", "La beauté des belles choses"], section: "61-80", icon: "🔁" },
+            { num: 62, title: "Le Parallélisme Syntaxique", subtitle: "Structures répétées", definition: "Répétition de structures grammaticales identiques dans des propositions successives.", role: "Crée un rythme, renforce l'idée, facilite la mémorisation", examples: ["Je viens, je vois, je conquiers", "Haut, plus haut, toujours haut", "Partir, c'est mourir un peu"], section: "61-80", icon: "🔢" },
+            { num: 63, title: "L'Antithèse Symétrique", subtitle: "Contraste équilibré", definition: "Mise en opposition symétrique de termes ou d'idées contraires.", role: "Crée l'équilibre, souligne les contrastes, facilite la compréhension", examples: ["Jour brille, nuit obscurcit", "Riche hier, pauvre aujourd'hui", "L'amour crée, la haine détruit"], section: "61-80", icon: "⚖️" },
+            { num: 64, title: "L'Oxymore Surréaliste", subtitle: "Association étrange", definition: "Oxymore créant une image surréelle ou fantastique.", role: "Crée une dimension poétique, suscite l'imagination, enrichit la vision", examples: ["Obscurité lumineuse", "Silence bruyant", "Beauté répugnante"], section: "61-80", icon: "😵" },
+            { num: 65, title: "Le Pun ou Calembour Étendu", subtitle: "Jeu de mots amplifié", definition: "Calembour développé sur plusieurs lignes ou verses.", role: "Crée de l'humour durable, amuse par l'accumulation, enrichit l'expression", examples: ["Pasteur avec ses fidèles moutonnent dans la bergerie", "Le lion passer l'arme au pied devant la souris", "Assurance donne satisfaction et garantie éternelle"], section: "61-80", icon: "😄" },
+            { num: 66, title: "La Synégénie", subtitle: "Union de contraires", definition: "Union ou association de mots ou d'idées contraires dans une même expression.", role: "Exprime les nuances, crée la profondeur, enrichit le sens", examples: ["Pensée pénible et douce", "Certitude incertaine", "Joie triste"], section: "61-80", icon: "😕" },
+            { num: 67, title: "L'Épanothèque", subtitle: "Reprise amplifiée", definition: "Reprise d'une idée avec amplification progressive.", role: "Crée une progression, amplifie l'effet, prépare le point culminant", examples: ["Fort. Non, puissant. Oui, invincible!", "Beau. Vraiment beau. Magnifiquement beau!", "J'aime. Je l'aime éperdument. Je lui voue un culte absolu"], section: "61-80", icon: "📢" },
+            { num: 68, title: "L'Épiphore Amplifiée", subtitle: "Répétition finale intensifiée", definition: "Épiphore avec progression de l'intensité à chaque répétition.", role: "Crée une progression, amplifie l'émotion, prépare le point culminant", examples: ["Je pars, tu pars, nous partons, ils partent", "Chante! Bien! Magnifiquement!", "Court, il court, nous courons, ils courent"], section: "61-80", icon: "🔊" },
+            { num: 69, title: "La Rime Masculine Enrichie", subtitle: "Rime forte et non muette", definition: "Rime masculine (non muette) employée de manière particulièrement frappante.", role: "Crée un effet sonore puissant, renforce le rythme, marque l'importance", examples: ["Liberté/Égalité", "Rêver/Rêves", "Douleur/Couleur"], section: "61-80", icon: "♂️" },
+            { num: 70, title: "La Rime Féminine Enrichie", subtitle: "Rime muette et délicate", definition: "Rime féminine (muette) employée pour son effet musical délicat.", role: "Crée une délicatesse, enrichit la musicalité, adoucit le ton", examples: ["Beauté/Dureté", "Lueur/Douleur", "Chanson/Horizon"], section: "61-80", icon: "♀️" },
+            { num: 71, title: "Le Vers Blanc", subtitle: "Vers sans rime", definition: "Vers doté d'un rythme mais sans rime finale.", role: "Permet la liberté expressive, modernise la poésie, crée naturel", examples: ["J'aime la vie qui s'écoule lentement", "Le temps passe comme les saisons", "Elle marcha vers l'avenir inconnu"], section: "61-80", icon: "📝" },
+            { num: 72, title: "Le Vers Libre", subtitle: "Totale liberté formelle", definition: "Vers sans rime ni mètre régulier, entièrement libre de structure.", role: "Permet la totale liberté d'expression, modernise la poésie, libère la forme", examples: ["Nuages gris flottant dans le ciel", "Silence. Puis soudain une note mélodieuse", "Elle était là, simplement, mystérieusement présente"], section: "61-80", icon: "✨" },
+            { num: 73, title: "Le Spoonerisme Intentionnel", subtitle: "Échange volontaire de sons", definition: "Échange volontaire de sons pour créer un effet humoristique.", role: "Crée de l'humour, amuse par l'absurdité, enrichit la musicalité", examples: ["Jésus Crisp au lieu de Jesus Christ", "Jésus frite au lieu de Jésus écrit", "Un feu d'artifice au lieu d'un feu de fierté"], section: "61-80", icon: "🔀" },
+            { num: 74, title: "La Diérèse Intentionnelle", subtitle: "Séparation syllabique volontaire", definition: "Séparation volontaire d'une diphtongue pour des raisons poétiques.", role: "Crée un effet rhythmique, enrichit le mètre, joue sur la musicalité", examples: ["Cha-o-s au lieu de cha-os", "Li-o-n au lieu de lion", "Di-eu au lieu de dieu"], section: "61-80", icon: "🔂" },
+            { num: 75, title: "La Synérèse Volontaire", subtitle: "Contraction syllabique intentionnelle", definition: "Contraction volontaire de deux syllabes pour des raisons métriques.", role: "Crée un rythme rapide, accélère la prononciation, joue sur le mètre", examples: ["Dieu (contraction de di-eu)", "Lion (contraction de li-on)", "Voyage (contraction de vo-ia-ge)"], section: "61-80", icon: "🔁" },
+            { num: 76, title: "L'Acrostiche Caché", subtitle: "Message caché acrostique", definition: "Acrostiche où le message n'est pas immédiatement visible.", role: "Crée une dimension secrète, enrichit le texte, surprend le lecteur attentif", examples: ["Poème dont les premières lettres forment un mot caché", "Message acrostiche dissimulé dans une phrase", "Mots arrangés formant un mot secret"], section: "61-80", icon: "🔤" },
+            { num: 77, title: "Le Calligramme Complexe", subtitle: "Image typographique élaborée", definition: "Calligramme créant une image complexe ou abstraite par l'arrangement du texte.", role: "Crée une dimension visuelle riche, joue sur la forme, enrichit l'art poétique", examples: ["Texte formant un cœur complet avec rythme interne", "Mots disposés en spirale concentrique", "Lettres formant une silhouette détaillée"], section: "61-80", icon: "🎨" },
+            { num: 78, title: "L'Allusion Littéraire", subtitle: "Référence à d'autres œuvres", definition: "Allusion à une autre œuvre littéraire ou artistique.", role: "Crée une complicité avec le lecteur cultivé, enrichit de résonances", examples: ["Comme Prométhée volant le feu des dieux", "Il connut son Waterloo personnel", "Une histoire d'amour digne de Roméo et Juliette"], section: "61-80", icon: "📖" },
+            { num: 79, title: "Le Symbole Personnel", subtitle: "Symbole créé par l'auteur", definition: "Création d'un symbole nouveau propre à l'auteur ou à l'œuvre.", role: "Crée l'originalité, enrichit le texte de significations profondes", examples: ["La rose noire pour la mélancolie", "L'oiseau blanc pour l'espoir", "Le labyrinth pour la confusion"], section: "61-80", icon: "🌹" },
+            { num: 80, title: "La Métaphorisation Totale", subtitle: "Univers entièrement métaphorique", definition: "Création d'un univers poétique complètement métaphorique et cohérent.", role: "Crée un monde poétique, magnifie l'expression, élève le ton", examples: ["Toute une œuvre où la vie est un théâtre", "Un univers où le temps est un fleuve", "Une création où l'amour est une bataille"], section: "61-80", icon: "🌍" },
+
+            // SECTION V (81-110)
+            { num: 81, title: "Le Paradoxe Philosophique", subtitle: "Contradiction profonde", definition: "Paradoxe exprimant une vérité philosophique ou existentielle.", role: "Invite à la réflexion profonde, exprime les vérités complexes, enrichit la pensée", examples: ["La mort donne un sens à la vie", "Le néant est la plénitude", "Vivre c'est mourir"], section: "81-110", icon: "🤔" },
+            { num: 82, title: "L'Oxymore Philosophique", subtitle: "Paradoxe imagé", definition: "Oxymore exprimant une vérité philosophique profonde.", role: "Exprime l'inexprimable, crée la profondeur, suscite la méditation", examples: ["La beauté du néant", "La lumière de l'obscurité", "Le silence du tumulte"], section: "81-110", icon: "💫" },
+            { num: 83, title: "La Comparaison Impossible", subtitle: "Rapprochement improbable", definition: "Comparaison entre éléments apparemment incomparables.", role: "Crée l'originalité absolue, surprend radicalement, enrichit l'imagination", examples: ["Une musique comme le goût du bleu", "Un silence aussi blanc qu'une symphonie", "L'amour couleur d'infini"], section: "81-110", icon: "🎪" },
+            { num: 84, title: "La Personnification Abstraite", subtitle: "Humanisation de concepts", definition: "Personnification de concepts ou d'abstractions avec détails vivants.", role: "Rend tangible l'abstrait, crée l'empathie envers les idées, anime le discours", examples: ["La mort danse avec grâce", "L'espoir murmure ses promesses", "La peur rampe dans les ombres"], section: "81-110", icon: "👻" },
+            { num: 85, title: "La Métaphore Épique Étendue", subtitle: "Comparaison héroïque amplifiée", definition: "Métaphore développée sur plusieurs passages avec ampleur épique.", role: "Crée une grandeur poétique, élève le ton, magnifie l'expression", examples: ["La vie est un champ de bataille éternel", "L'amour est une odyssée sans fin", "L'existence est une épopée cosmique"], section: "81-110", icon: "⚔️" },
+            { num: 86, title: "L'Hyperbole Surréaliste", subtitle: "Exagération fantastique", definition: "Hyperbole créant une image surréelle ou fantastique.", role: "Crée l'imagination débordante, suscite l'émerveillement, enrichit la vision", examples: ["Ses pleurs inondaient l'océan", "Son rire faisait trembler les montagnes", "Son amour embrasait l'univers"], section: "81-110", icon: "🔥" },
+            { num: 87, title: "L'Antithèse Philosophique", subtitle: "Opposition existentielle", definition: "Antithèse exprimant une opposition philosophique profonde.", role: "Crée la réflexion, exprime les paradoxes de l'existence, enrichit la pensée", examples: ["L'être et le néant", "La vie et la mort", "L'amour et la haine"], section: "81-110", icon: "⚖️" },
+            { num: 88, title: "Le Calembour Philosophique", subtitle: "Jeu de mots significatif", definition: "Calembour qui exprime également une profondeur philosophique.", role: "Crée de l'humour tout en exprimant une vérité, amuse et instruit", examples: ["Seul le fou ose dire la vérité", "L'amour c'est la maladie du cœur", "La poésie c'est la véritée de l'âme"], section: "81-110", icon: "😄" },
+            { num: 89, title: "Le Zeugme Sophiste", subtitle: "Construction double ingénieuse", definition: "Zeugme particulièrement ingénieux jouant sur plusieurs niveaux.", role: "Crée l'originalité, démontre la virtuosité stylistique, surprend et amuse", examples: ["Elle perdit ses gants et sa pudeur", "Armé de son courage et d'une épée", "Il abandonna ses rêves et ses responsabilités"], section: "81-110", icon: "🎯" },
+            { num: 90, title: "L'Ironie Tragique", subtitle: "Ironie du destin", definition: "Ironie où la réalité contredit cruellement les attentes.", role: "Crée une profondeur tragique, invite à la réflexion sur le destin", examples: ["Celui qui prêchait la vertu était le pire des pécheurs", "Elle rêvait de liberté et mourut prisonnière", "Il fuyait l'amour et il le trouva"], section: "81-110", icon: "😢" },
+            { num: 91, title: "La Synécdoque Philosophique", subtitle: "Substitution profonde", definition: "Synécdoque créant une profondeur philosophique.", role: "Crée l'abstraction, exprime les vérités universelles, enrichit le sens", examples: ["Tous les cœurs battaient pour la patrie", "Écoutez la voix de la raison", "Levers des mains vers le ciel"], section: "81-110", icon: "🔄" },
+            { num: 92, title: "La Métonymie Profonde", subtitle: "Substitution significative", definition: "Métonymie enrichie de sens philosophique ou poétique.", role: "Crée des associations d'idées riches, exprime les liens invisibles", examples: ["Lire Molière pour comprendre le cœur humain", "Boire à la source de la sagesse", "Entendre la voix de la conscience"], section: "81-110", icon: "📚" },
+            { num: 93, title: "L'Allitération Épique", subtitle: "Répétition de sons épiques", definition: "Allitération créant un effet épique ou héroïque.", role: "Crée l'épopée, renforce l'héroïsme, marque la grandeur", examples: ["Fiers, farouches, féroces guerriers", "Doux dédain de la destinée", "Majestueux, magnifique, monumental"], section: "81-110", icon: "🔊" },
+            { num: 94, title: "L'Assonance Lyrique", subtitle: "Harmonie vocale poétique", definition: "Assonance créant une atmosphère lyrique particulière.", role: "Crée la musicalité, établit une atmosphère émotionnelle, enchante le lecteur", examples: ["Et l'âme, énamourée, avance vers l'aurore", "Le bleu du ciel doux, fluide, infini", "La belle mélodie de l'éternité"], section: "81-110", icon: "🎵" },
+            { num: 95, title: "Le Paradoxe Onirique", subtitle: "Paradoxe du rêve", definition: "Paradoxe créant une logique onirique ou surréelle.", role: "Crée l'étrangeté, enrichit l'imaginaire, transcende la logique", examples: ["Dans le rêve, la mort naît", "Voler en restant immobile", "Parler en silence absolu"], section: "81-110", icon: "😴" },
+            { num: 96, title: "L'Hyperbole Mystique", subtitle: "Exagération transcendante", definition: "Hyperbole créant un effet mystique ou transcendant.", role: "Crée la spiritualité, élève vers le divin, magnifie l'inexprimable", examples: ["Son amour embrasait les étoiles", "Sa voix résonnait au cœur de l'éternité", "Son regard perçait les mondes invisibles"], section: "81-110", icon: "✨" },
+            { num: 97, title: "La Périphrase Mystique", subtitle: "Détour expressif sacré", definition: "Périphrase créant une atmosphère mystique ou sacrée.", role: "Crée la solennité, enrichit de significations profondes, magnifie", examples: ["Le souffle divin dans le silence", "Les portes du mystère éternel", "L'essence ineffable de la beauté"], section: "81-110", icon: "🌟" },
+            { num: 98, title: "Le Symbole Universel", subtitle: "Symbole archétypal", definition: "Utilisation de symboles archétypaux universels.", role: "Crée l'universalité, touche au cœur de l'humanité, enrichit profondément", examples: ["L'eau comme symbole de purification", "Le feu comme symbole de passion", "Le labyrinthe comme symbole de confusion"], section: "81-110", icon: "🌀" },
+            { num: 99, title: "L'Allégorie Cosmique", subtitle: "Allégorie de l'univers", definition: "Allégorie où l'univers entier représente une idée.", role: "Crée la grandeur cosmique, exprime l'infini, magnifie l'expression", examples: ["L'univers comme théâtre du destin", "Le cosmos comme corps de Dieu", "Les astres comme symboles du destin"], section: "81-110", icon: "🌌" },
+            { num: 100, title: "La Métaphorisation Cosmique", subtitle: "Univers métaphorique complet", definition: "Création d'un univers entièrement métaphorique et cosmique.", role: "Crée un monde poétique total, magnifie l'expression, élève infiniment", examples: ["Toute une épopée où la conscience est l'univers", "Une création où l'âme devient cosmos", "Un univers où l'amour est le fondement"], section: "81-110", icon: "🪐" },
+            { num: 101, title: "L'Ironie Poétique", subtitle: "Ironie lyrique", definition: "Ironie employée pour un effet poétique ou lyrique.", role: "Crée la poésie, enrichit l'émotion, exprime les nuances délicates", examples: ["L'oiseau chante sa prison avec joie", "La nuit éclaire dans l'obscurité", "Le silence parle plus fort que les mots"], section: "81-110", icon: "🎭" },
+            { num: 102, title: "Le Zeugme Poétique", subtitle: "Double construction lyrique", definition: "Zeugme créant un effet poétique ou lyrique particulier.", role: "Crée la poésie, enrichit l'imagination, exprime l'inexprimable", examples: ["Il abandonna son cœur et ses armes", "Elle perdit son chemin et son innocence", "On oublie la douleur et la raison"], section: "81-110", icon: "💔" },
+            { num: 103, title: "L'Antithèse Lyrique", subtitle: "Opposition poétique", definition: "Antithèse créant une oppositionpoétique ou lyrique.", role: "Crée la poésie, exprime les contrastes émotionnels, enrichit l'expression", examples: ["Noir et blanc dansent ensemble", "Mort et vie dans un seul cœur", "Silence bruyant d'une solitude peuplée"], section: "81-110", icon: "🖤" },
+            { num: 104, title: "La Comparaison Lyrique", subtitle: "Rapprochement poétique", definition: "Comparaison créant un effet lyrique ou poétique.", role: "Crée la poésie, enrichit l'émotion, magnifie l'expression", examples: ["Comme le ciel se reflète dans l'eau", "Ainsi qu'une fleur dans le vent", "Tel un oiseau envolé vers l'infini"], section: "81-110", icon: "🌸" },
+            { num: 105, title: "La Personnification Lyrique", subtitle: "Humanisation poétique", definition: "Personnification créant un effet lyrique ou poétique.", role: "Anime l'inanimé avec poésie, crée l'empathie, enrichit l'émotion", examples: ["Le vent murmure ses secrets", "La pluie pleure sur la terre", "Les étoiles dansent dans la nuit"], section: "81-110", icon: "🌙" },
+            { num: 106, title: "L'Énumération Lyrique", subtitle: "Accumulation poétique", definition: "Énumération créant un effet lyrique ou accumulation poétique.", role: "Crée une progression lyrique, amplifie l'émotion, enrichit l'atmosphère", examples: ["Fleurs, oiseaux, rivières, montagnes, tout chante", "Douleur, amour, espoir, rêves, tout vit", "Silence, solitude, nuit, infini, tout parle"], section: "81-110", icon: "🌺" },
+            { num: 107, title: "L'Antiphrase Lyrique", subtitle: "Affirmation contraire poétique", definition: "Antiphrase créant un effet lyrique ou poétique.", role: "Crée la poésie, exprime l'ironie délicate, enrichit l'émotion", examples: ["'Quelle belle solitude!'", "'Comme elle est silencieusement bruyante!'", "'L'obscurité si lumineuse de la nuit!'"], section: "81-110", icon: "🎵" },
+            { num: 108, title: "L'Oxymore Lyrique", subtitle: "Association paradoxale poétique", definition: "Oxymore créant un effet lyrique ou poétique.", role: "Crée la poésie, exprime les nuances complexes, magnifie l'expression", examples: ["Une joyeuse tristesse", "Un silence éloquent", "Une belle mélancolie"], section: "81-110", icon: "💜" },
+            { num: 109, title: "L'Hyperbole Lyrique", subtitle: "Exagération poétique", definition: "Hyperbole créant un effet lyrique ou poétique exagéré.", role: "Crée la poésie, amplifie l'émotion, magnifie l'expression", examples: ["Mon amour s'étend jusqu'aux confins de l'univers", "Tes yeux contiennent toutes les étoiles", "Mon cœur déborde d'une éternité d'amour"], section: "81-110", icon: "💕" },
+            { num: 110, title: "La Métaphore Lyrique", subtitle: "Comparaison implicite poétique", definition: "Métaphore créant un effet lyrique ou poétique particulier.", role: "Crée la poésie totale, magnifie l'expression, élève l'âme", examples: ["Tu es mon soleil levant", "L'amour est mon infini", "Mon cœur est un jardin secret"], section: "81-110", icon: "🌹" }
+        ];
+
+        let currentFilter = 'all';
+
+        function renderFigures(figures) {
+            const grid = document.getElementById('figuresGrid');
+            grid.innerHTML = '';
+
+            figures.forEach(fig => {
+                const card = document.createElement('div');
+                card.className = 'figure-card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="card-num">Figure ${fig.num}</div>
+                        <h3 class="card-title">${fig.title}</h3>
+                        <div class="card-subtitle">${fig.subtitle}</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="illustration">${fig.icon}</div>
+                        <div class="definition"><strong>Définition:</strong><br>${fig.definition}</div>
+                        <div class="role-section">
+                            <div class="role-title">🎯 Rôle et Fonction:</div>
+                            <div class="role-text">${fig.role}</div>
+                        </div>
+                        <div class="examples-section">
+                            <div class="examples-title">📌 Trois Exemples:</div>
+                            ${fig.examples.map((ex, idx) => `<div class="example">${idx + 1}. ${ex}</div>`).join('')}
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Mettre à jour les stats
+            const stats = document.getElementById('stats');
+            stats.textContent = `Affichage de ${figures.length} figure${figures.length > 1 ? 's' : ''}`;
+        }
+
+        function filterBySection(section) {
+            currentFilter = section;
+
+            // Mettre à jour les boutons actifs
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Filtrer les figures
+            let filtered = allFigures;
+            if (section !== 'all') {
+                filtered = allFigures.filter(fig => fig.section === section);
+            }
+
+            renderFigures(filtered);
+        }
+
+        document.getElementById('searchInput').addEventListener('keyup', function(e) {
+            const query = e.target.value.toLowerCase();
+
+            if (query === '') {
+                filterBySection(currentFilter);
+                return;
+            }
+
+            let filtered = allFigures.filter(fig => 
+                fig.title.toLowerCase().includes(query) ||
+                fig.definition.toLowerCase().includes(query) ||
+                fig.examples.some(ex => ex.toLowerCase().includes(query))
+            );
+
+            renderFigures(filtered);
+        });
+
+        // Rendu initial
+        renderFigures(allFigures);
+    </script>
+</body>
+</html>
